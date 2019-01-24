@@ -1,0 +1,18 @@
+{
+  "name": "collapsible",
+  "version": "1.0.0",
+  "description": "Collapse navbar items dynamically, when there isn't enough space on the screen",
+  "main": "gulpfile.js",
+  "repository": "git@github.com:domcorvasce/collapsible",
+  "author": "Dom Corvasce <dom.corvasce@yandex.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-uglify": "^3.0.1"
+  },
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch"
+  }
+}
