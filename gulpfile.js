@@ -1,11 +1,11 @@
 const { src, dest, parallel, watch } = require('gulp');
 const browsersync = require("browser-sync").create();
-const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
 
 function browserSync(done) {
   browsersync.init({
     server: {
-      baseDir: "./public/"
+      baseDir: "."
     },
     port: 3000
   });
@@ -19,14 +19,14 @@ function browserSyncReload(done) {
 
 function js() {
   return src('src/*.js', { sourcemaps: true })
-    .pipe(uglify())
+    .pipe(babel())
     .pipe(dest('dist/', { sourcemaps: true }))
     .pipe(browsersync.stream());
 }
 
 function watchFiles() {
-  watch("./src/js/**/*", js);
-  watch("./public/index.html", browserSyncReload);
+  watch("./src/*.js", js);
+  watch("./index.html", browserSyncReload);
 }
 
 exports.js = js;
