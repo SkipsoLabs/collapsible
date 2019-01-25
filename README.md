@@ -8,7 +8,7 @@
 
 <hr />
 
-[Demo](https://domcorvasce.github.io/collapsible)
+<img src="./demo.gif" aria-hidden="true">
 
 ## Installation
 
@@ -29,14 +29,14 @@ Clone this repository:
 git clone https://github.com/domcorvasce/collapsible
 ```
 
-Then, go into the folder and install the development dependencies ():
+Then, go into the folder and install the development dependencies:
 
 ```shell
 cd collapsible
 yarn
 ```
 
-You're ready to build the minified script:
+You're ready to build the asset:
 
 ```shell
 yarn build
