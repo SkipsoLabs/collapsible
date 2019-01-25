@@ -7,7 +7,6 @@
 
     <title>Collapsible</title>
 
-    <link rel="stylesheet" href="https://internal.skipsolabs.com/assets/limitless/css/icons/fontawesome/styles.min.css?v=1.68.448">
     <link rel="stylesheet" href="https://internal.skipsolabs.com/assets/limitless/css/bootstrap.css?v=1.68.448">
     <link rel="stylesheet" href="https://internal.skipsolabs.com/css/../limitless/assets/css/core.css?v=1.68.448">
     
@@ -64,6 +63,7 @@
     </div>
 </body>
 
+<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 <script src="/dist/collapsible.js"></script>
 <script>
     var pageDimens = document.querySelector('#page-dimens');
@@ -72,5 +72,9 @@
     window.onresize = function () {
         pageDimens.innerText = window.innerWidth + 'x' + window.innerHeight;    
     }
+
+    // Initialize collapsible
+    var collapsible = new Collapsible('.navbar-nav', 320);
+    collapsible.render();
 </script>
 </html>

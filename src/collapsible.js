@@ -9,7 +9,7 @@ class Collapsible {
         this.container = this.queryContainer(selector);
         this.threshold = threshold;
 
-        this.items = this.container.querySelector('li');
+        this.items = this.container.querySelectorAll('li');
         this.itemsDimensions = this.getItemsDimensions();
     }
     
@@ -21,7 +21,7 @@ class Collapsible {
      * @returns {*} The items' container element
      */
     queryContainer(selector) {
-        var container = document.querySelector(selector);
+        const container = document.querySelector(selector);
     
         if (!container) {
             throw new Error('Collapsible: No element find using "' + selector + '" selector');
@@ -30,17 +30,65 @@ class Collapsible {
         return container;
     }
 
-    // Get initial dimensions for each item, in order to approximate the space necessary to render them all.
+    /**
+     * /Get initial dimensions for each item, in order to approximate
+     * the space necessary to render them all.
+     */
     getItemsDimensions() {
-        var dimensions = [];
+        const dimensions = [];
     
-        for (var i = 0; i < this.items.length; i++) {
-            var item  = this.items[i];
-            var width = item.getBoundingClientRect().width;
+        for (let i = 0; i < this.items.length; i++) {
+            const item  = this.items[i];
+            const width = item.getBoundingClientRect().width;
     
             dimensions.push(width);
         }
     
         return dimensions;
+    }
+
+    /**
+     * Inject the collapsed menu which will contain the exceeding items.
+     * The default content is meant to act like a placeholder.
+     * You should customize this method based on your needs.
+     */
+    inject() {
+        const menu = document.createElement('li');
+        menu.classList.add('collapsible-menu');
+
+        const dropdownList = document.createElement('ul');
+        dropdownList.classList.add('dropdown-menu', 'collapsible-dropdown-list');
+
+        const icon = document.createElement('span');
+        icon.classList.add('fas', 'fa-bars');
+
+        const dropdown = document.createElement('div');
+        dropdown.classList.add('dropdown', 'collapsible-dropdown');
+        
+        const button = document.createElement('button');
+        button.classList.add('btn', 'dropdown-toggle', 'collapsible-toggle');
+
+        // Copy items from the original navbar
+        this.items.forEach((item) => {
+            const clone = item.cloneNode(true);
+
+            clone.classList.add('hide');
+            dropdownList.append(clone);
+        });
+
+        button.append(icon);
+        dropdown.append(button);
+        dropdown.append(dropdownList);
+
+        menu.append(dropdown);
+        this.container.append(menu);
+    }
+
+    /**
+     * Initialize the resize sensor and assign it the right callback,
+     * containing the code to collapse exceeding items when needed.
+     */
+    render() {
+        this.inject();
     }
 }
