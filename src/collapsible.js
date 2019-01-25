@@ -84,12 +84,13 @@ class Collapsible {
         }
 
         // Clear the state for each item: both in the original list and in the collapsed one
-        this.items.forEach((item, index) => {
-            const clone = dropdownItems[index];
+        for (let i = 0; i < this.items.length; i++) {
+	    const item = this.items[i];
+            const clone = dropdownItems[i];
 
             item.classList.remove('hide');
             clone.classList.add('hide');
-        });
+        }
 
         for (let i = 0; i < amountOfItemsToCollapse; i++) {
             const index = dropdownItems.length - i - 1;
@@ -129,12 +130,12 @@ class Collapsible {
         });
 
         // Copy items from the original navbar
-        this.items.forEach((item) => {
+        for (const item of this.items) {
             const clone = item.cloneNode(true);
 
             clone.classList.add('hide');
             dropdownList.append(clone);
-        });
+        }
 
         button.append(icon);
         dropdown.append(button);
