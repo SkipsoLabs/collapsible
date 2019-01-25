@@ -31,7 +31,7 @@ class Collapsible {
     }
 
     /**
-     * /Get initial dimensions for each item, in order to approximate
+     * Get initial dimensions for each item, in order to approximate
      * the space necessary to render them all.
      */
     getItemsDimensions() {
@@ -45,6 +45,60 @@ class Collapsible {
         }
     
         return dimensions;
+    }
+
+    /**
+     * Calculate the available space based on the page width, and return
+     * the amount of items we must collapse.
+     * 
+     * @returns {Number} Amount of items to collapse
+     */
+    getAmountOfItemsToCollapse() {
+        const renderable = { amount: 0, width: 0 };
+        const pageWidth = document.body.offsetWidth;
+
+        for (let i = 0; i < this.items.length; i++) {
+            const itemWidth = this.itemsDimensions[i];
+            renderable.width += itemWidth;
+
+            if ((pageWidth - renderable.width) < this.threshold)
+                break;
+
+            renderable.amount++;
+        }
+
+        return this.items.length - renderable.amount;
+    }
+
+    collapse() {
+        const menu = this.container.querySelector('.collapsible-menu');
+        const dropdown = menu.querySelector('.collapsible-dropdown');
+        const dropdownItems = dropdown.querySelectorAll('li');
+        const amountOfItemsToCollapse = this.getAmountOfItemsToCollapse();
+
+        // Default case on large screens and when there is enough space
+        menu.classList.remove('hide');
+        
+        if (amountOfItemsToCollapse === 0) {
+          menu.classList.add('hide');
+        }
+
+        // Clear the state for each item: both in the original list and in the collapsed one
+        this.items.forEach((item, index) => {
+            const clone = dropdownItems[index];
+
+            item.classList.remove('hide');
+            clone.classList.remove('visible');
+        });
+
+        for (let i = 0; i < amountOfItemsToCollapse; i++) {
+            const index = this.items.length - i - 1;
+            const item = this.items[index];
+            const clone = dropdownItems[index];
+
+            item.classList.add('hide');
+            clone.classList.add('visible');
+        }
     }
 
     /**
@@ -90,5 +144,7 @@ class Collapsible {
      */
     render() {
         this.inject();
+        this.collapse();
+        new ResizeSensor(this.container, this.collapse.bind(this));
     }
 }
