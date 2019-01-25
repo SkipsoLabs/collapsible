@@ -1,6 +1,7 @@
 const { src, dest, parallel, watch } = require('gulp');
 const browsersync = require("browser-sync").create();
 const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
 
 function browserSync(done) {
   browsersync.init({
@@ -19,7 +20,10 @@ function browserSyncReload(done) {
 
 function js() {
   return src('src/*.js', { sourcemaps: true })
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['@babel/env'],
+    }))
+    .pipe(uglify())
     .pipe(dest('dist/', { sourcemaps: true }))
     .pipe(browsersync.stream());
 }
