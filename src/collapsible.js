@@ -151,6 +151,7 @@ class Collapsible {
     render() {
         this.inject();
         this.collapse();
-        new ResizeSensor(this.container, this.collapse.bind(this));
+
+        new ResizeSensor(this.container.parentElement, this.collapse.bind(this));
     }
 }
