@@ -88,16 +88,16 @@ class Collapsible {
             const clone = dropdownItems[index];
 
             item.classList.remove('hide');
-            clone.classList.remove('visible');
+            clone.classList.add('hide');
         });
 
         for (let i = 0; i < amountOfItemsToCollapse; i++) {
-            const index = this.items.length - i - 1;
+            const index = dropdownItems.length - i - 1;
             const item = this.items[index];
             const clone = dropdownItems[index];
 
             item.classList.add('hide');
-            clone.classList.add('visible');
+            clone.classList.remove('hide');
         }
     }
 
@@ -122,6 +122,12 @@ class Collapsible {
         const button = document.createElement('button');
         button.classList.add('btn', 'dropdown-toggle', 'collapsible-toggle');
 
+        // Attach event to toggle dropdown menu, without using default Bootstrap jQuery-based script
+        button.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            dropdown.classList.toggle('open');
+        });
+
         // Copy items from the original navbar
         this.items.forEach((item) => {
             const clone = item.cloneNode(true);
@@ -140,7 +146,7 @@ class Collapsible {
 
     /**
      * Initialize the resize sensor and assign it the right callback,
-     * containing the code to collapse exceeding items when needed.
+     * containing the code to collapse exceeding items when necessary.
      */
     render() {
         this.inject();
