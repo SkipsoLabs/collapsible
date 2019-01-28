@@ -12,6 +12,8 @@
 
 ## Installation
 
+**It requires [DOM4](https://github.com/WebReflection/dom4#dom4) to work on IE >= 10**
+
 **It requires [ResizeSensor](https://cdn.jsdelivr.net/npm/resize-sensor@0.0.6/ResizeSensor.min.js) to work correctly.**
 
 ### Using pre-generated asset
