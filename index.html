@@ -1,82 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>Collapsible</title>
+    <link rel="stylesheet" href="bootstrap.css">
+  </head>
+  <body>
 
-    <link rel="stylesheet" href="https://internal.skipsolabs.com/assets/limitless/css/bootstrap.css?v=1.68.448">
-    <link rel="stylesheet" href="https://internal.skipsolabs.com/css/../limitless/assets/css/core.css?v=1.68.448">
-    
-    <style>
-        html, body, #page {
-            width: 100vw;
-            height: 100vh;
-            background-color: #f8f8f8;
-            color: #333;
-        }
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+              DROP2
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link4</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link5</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link6</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link4</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link5</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link6</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link4</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link5</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link6</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link3</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-        .d-flex {
-            max-width: 70%;
-            height: 100vh;
-            margin: 0 15%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #navbar-first {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="page">
-        <div id="navbar-first" class="navbar navbar-lg no-padding no-box-shadow sk-big-navbar navigation-bar">
-            <ul class="nav navbar-nav nav-tabs nav-tabs-bottom bottom-divided no-margin">
-                <li><a href="#startups">All Startups</a></li>
-                <li><a href="#combinators">Combinators</a></li>
-                <li><a href="#usa">USA</a></li>
-                <li><a href="#europe">Europe</a></li>
-                <li><a href="#asia">Asia</a></li>
-                <li><a href="#challenges">Challenges</a></li>
-                <li><a href="#designcontests">Design Contests</a></li>
-                <li><a href="#devws">Dev Workshops</a></li>
-                <li><a href="#businessws">Business Workshops</a></li>
-                <li><a href="#marketingsessions">Marketing Sessions</a></li>
-                <li><a href="#credits">Credits</a></li>
-            </ul>
-        </div>
-
-        <div class="d-flex">
-            <img src="/logo.png" class="img-responsive" aria-hidden="true">
-            <h5>Resize page to see it in action, or switch between landscape and portrait mode</h5>
-            <p id="page-dimens"></p>
-        </div>
+    <div class="d-flex">
+      <p id="page-dimens"></p>
     </div>
-</body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom4/2.0.0/dom4.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/resize-sensor@0.0.6/ResizeSensor.min.js"></script>
-<script src="/dist/collapsible.js"></script>
-<script>
+  </body>
+
+  <script src="dom4.js"></script>
+  <script src="ResizeSensor.min.js"></script>
+  <script src="collapsible.js"></script>
+
+  <script src="jquery.js"></script>
+  <script src="bootstrap.js"></script>
+
+  <script>
     var pageDimens = document.querySelector('#page-dimens');
     pageDimens.innerText = window.innerWidth + 'x' + window.innerHeight;
 
     window.onresize = function () {
-        pageDimens.innerText = window.innerWidth + 'x' + window.innerHeight;    
+    pageDimens.innerText = window.innerWidth + 'x' + window.innerHeight;
     }
 
     // Initialize collapsible
     var collapsible = new Collapsible('.navbar-nav', 200);
     collapsible.render();
-</script>
+  </script>
 </html>
