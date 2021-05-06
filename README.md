@@ -10,6 +10,8 @@
 
 <img src="./demo.gif" aria-hidden="true">
 
+## ⚠️ This project is unmaintained ⚠️
+
 ## Installation
 
 **It requires [DOM4](https://github.com/WebReflection/dom4#dom4) to work on IE >= 10**
